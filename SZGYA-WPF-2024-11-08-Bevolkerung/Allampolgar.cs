@@ -22,8 +22,8 @@ namespace SZGYA_WPF_2024_11_08_Bevolkerung
         public string? IskolaiVegzettseg { get; set; }
         public string PolitikaiNezet { get; set; }
         public bool_magyar AktivSzavazo { get; set; }
-        public int ItalFogyasztasEvente { get; set; }
-        public int KrumpliFogyasztasEvente { get; set; }
+        public int? ItalFogyasztasEvente { get; set; }
+        public int? KrumpliFogyasztasEvente { get; set; }
 
         public int Eletkor => DateTime.Now.Year - this.SzuletesiEv;
         public double HaviJovedelem => this.NettoJovedelem / 12;
@@ -44,8 +44,8 @@ namespace SZGYA_WPF_2024_11_08_Bevolkerung
             this.IskolaiVegzettseg = adatok[10].Trim().Length != 0 ? adatok[10] : null;
             this.PolitikaiNezet = adatok[11];
             this.AktivSzavazo = adatok[12] == "igen";
-            this.ItalFogyasztasEvente = adatok[13] == "NA" ? -1 : int.Parse(adatok[13]);
-            this.KrumpliFogyasztasEvente = adatok[14] == "NA" ? -1 : int.Parse(adatok[14]);
+            this.ItalFogyasztasEvente = adatok[13] == "NA" ? null : int.Parse(adatok[13]);
+            this.KrumpliFogyasztasEvente = adatok[14] == "NA" ? null : int.Parse(adatok[14]);
         }
 
         public override string ToString()
